@@ -15,7 +15,7 @@ RUN \
 apt-get update &&\
 apt-get install -y unzip libpng12-dev libjpeg-dev php7.1-gd php7.1-mysql curl &&\
 rm -rf /var/lib/apt/lists/* &&\
-WORDPRESS_DOWNLOAD=$(curl -fsL https://wordpress.org/download/release-archive/ | grep -Eo 'https://wordpress.org/wordpress-4.[0-9\.]{1,4}.tar.gz' | sed 's/\.tar\.gz//' | sort -nr | uniq | head -1) && \
+WORDPRESS_DOWNLOAD=$(curl -fsL https://wordpress.org/download/release-archive/ | grep -Eo 'https://wordpress.org/wordpress-4.[0-9\.]{1,4}.tar.gz' | head -1) && \
 curl -fsL $WORDPRESS_DOWNLOAD.tar.gz -o /usr/src/wordpress.tar.gz && \
 chmod -R 755 /hooks /init && \
 chmod 666 /etc/nginx/sites-enabled/site.conf
